@@ -17,7 +17,7 @@ async fn main() -> std::io::Result<()> {
     database::establish_connection();
 
     HttpServer::new(|| App::new()
-        //.route("/users", web::get().to(users::get_users)))
+        .route("/users", web::get().to(users::get_users)))
         .bind("127.0.0.1:8080")?
         .run()
         .await

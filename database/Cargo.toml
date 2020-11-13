@@ -11,3 +11,5 @@ diesel = { version = "1.4.4", features = ["postgres", "r2d2"] }
 dotenv = "0.15.0"
 log = "0.4.11"
 serde = "1.0.117"
+
+error = { path = "../error" }

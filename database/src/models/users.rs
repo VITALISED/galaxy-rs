@@ -1,8 +1,8 @@
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 use diesel::PgConnection;
-use diesel::RunQueryDsl;
 use diesel::QueryDsl;
+use diesel::RunQueryDsl;
 
 use crate::schema::users;
 
@@ -20,10 +20,8 @@ pub struct User {
     pub big_bio: String,
 }
 
-
-
 #[derive(Insertable)]
-#[table_name="users"]
+#[table_name = "users"]
 pub struct NewUser {
     pub username: String,
     pub email: String,
@@ -34,7 +32,5 @@ pub struct NewUser {
 }
 
 impl User {
-    pub fn create(connection: &PgConnection) -> Result<User, APIError> {
-        
-    }
+    pub fn create(connection: &PgConnection) -> Result<User, APIError> {}
 }

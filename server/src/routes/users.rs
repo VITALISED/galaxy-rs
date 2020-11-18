@@ -8,7 +8,7 @@ pub async fn update() -> impl Responder {
     format!("Post User")
 }
 
-pub async fn create() -> impl Responder  {
+pub async fn create() -> impl Responder {
     format!("Create User")
 }
 

@@ -1,36 +1,33 @@
+use crate::schema::users;
+use diesel::PgConnection;
 use serde::{Deserialize, Serialize};
 
-use diesel::PgConnection;
-use diesel::QueryDsl;
-use diesel::RunQueryDsl;
-
-use crate::schema::users;
+use uuid::Uuid;
 
 #[derive(Debug, Serialize, Deserialize, Queryable, Insertable)]
 #[table_name = "users"]
 pub struct User {
-    #[serde(skip)] // IDs are incremental (for now atleast) and should not be shown.
-    pub id: i32,
-    pub username: String,
-    pub email: String,
-    #[serde(skip)] // We don't want this in the response now hey.
-    pub pass_hash: String,
-    pub avatar: String,
-    pub bio: String,
-    pub big_bio: String,
-}
-
-#[derive(Insertable)]
-#[table_name = "users"]
-pub struct NewUser {
+    pub id: Uuid,
     pub username: String,
     pub email: String,
     pub pass_hash: String,
     pub avatar: Option<String>,
     pub bio: Option<String>,
     pub big_bio: Option<String>,
+    pub created_at: chrono::NaiveDateTime,
 }
 
 impl User {
-    pub fn create(connection: &PgConnection) -> Result<User, APIError> {}
+    pub fn from <S: Into<String>, T: Into<String>, P: Into<String>> (username: S, email: T, pass: P) -> Self {
+        User {
+            id: Uuid::new_v4(),
+            email: email.into(),
+            username: username.into(),
+            pass_hash: pass.into(),
+            avatar: None,
+            bio: None,
+            big_bio: None,
+            created_at: chrono::Local::now().naive_local(),
+        }
+    }
 }

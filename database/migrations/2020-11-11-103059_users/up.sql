@@ -6,6 +6,6 @@ CREATE TABLE users (
     pass_hash VARCHAR(255) NOT NULL,
     avatar TEXT,
     bio VARCHAR(255),
-    big_bio VARCHAR(8000)
-    created_at TIMESTAMP NOT NULL
+    big_bio VARCHAR(8000),
+    created_at TIMESTAMP NOT NULL,
 )

@@ -10,3 +10,12 @@ table! {
         created_at -> Timestamp,
     }
 }
+
+table! {
+    confirmations (id) {
+        id -> Uuid,
+        username -> Varchar,
+        email -> Varchar,
+        expires_at -> Timestamp,
+    }
+}

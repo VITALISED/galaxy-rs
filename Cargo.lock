@@ -624,6 +624,16 @@ dependencies = [
 [[package]]
 name = "error"
 version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "chrono",
+ "derive_more",
+ "diesel",
+ "dotenv",
+ "log",
+ "serde",
+ "uuid",
+]
 
 [[package]]
 name = "flate2"
